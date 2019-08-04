@@ -2,15 +2,12 @@
 #include "ler.h"
 #include "pesquisar.h"
 
-
-
 int mostrarMenu(void);
 
 int main(void)
 {
     int introduzido = -1;
     int isLerMainExecuted = 0;
-
 
     do{
         introduzido = mostrarMenu();
@@ -48,8 +45,12 @@ int mostrarMenu(void)
     printf("0: Exit\n");
     printf("***************************************\n");
     printf("Inserido: ");
-    scanf("%d", &introduzido);
+
+    if(scanf("%d", &introduzido) != 1)
+    {
+        printf("Input invalido, a terminar o programa.");
+        return 0;
+    }
 
     return introduzido;
-
 }

@@ -22,10 +22,10 @@ void copiarFicheiro(DataBase policeDataBase[], FILE* ficheiro)
     for(i = 0; i < MAX_SIZE; i++)
         {
             policeDataBase[i].numero = (char*) malloc(2049 * sizeof(char)); //Null operator
+
             policeDataBase[i].ID = copiarID(ficheiro);
 
             copiarNumero(policeDataBase, i, ficheiro);
-
 
             if(i == 25000)
                 printf("\nCopiando... 25%% ");
@@ -40,19 +40,21 @@ void copiarFicheiro(DataBase policeDataBase[], FILE* ficheiro)
 
 int copiarID(FILE* ficheiro)
 {
-    int iD;
-    fscanf( ficheiro,"%d", &iD);
+    int id;
+    fscanf(ficheiro,"%d", &id);
 
-    return iD;
+    return id;
 }
 
-void copiarNumero(DataBase policeDataBase[],int i ,FILE* ficheiro)
+void copiarNumero(DataBase policeDataBase[], int i, FILE* ficheiro)
 {
     fgetc(ficheiro); //TAB
     fgets(policeDataBase[i].numero, 2049, ficheiro);
     policeDataBase[i].numero[2049] = '\0';
 
 }
+
+// copiado
 void freeMemoryLer(DataBase policeDataBase[])
 {
     int i;
